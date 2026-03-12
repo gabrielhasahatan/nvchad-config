@@ -5,6 +5,13 @@ return {
     opts = require "configs.conform",
   },
 
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -21,8 +28,18 @@ return {
         "css",
         "tsx",
         "typescript",
-        "ruby",
+        "rust",
         "dart",
+        "ruby"
+      },
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        width = 45, -- 👈 ini yang kamu cari
       },
     },
   },
@@ -47,6 +64,13 @@ return {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
+
+  {
+    'echasnovski/mini.animate',
+    lazy = false,
+    version = '*',
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
@@ -58,5 +82,27 @@ return {
   --      "html", "css"
   -- 		},
   -- 	},
+  -- },
+  -- -- These are some examples, uncomment them if you want to see them work!
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --     require "configs.treesitter"
+  --   end,
+  -- },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   opts = {
+  --     ensure_installed = {
+  --       "lua",
+  --       "html",
+  --       "css",
+  --       "tsx",
+  --       "javascript",
+  --       "typescript",
+  --       "ruby",
+  --       "dart",
+  --     },
+  --   },
   -- },
 }

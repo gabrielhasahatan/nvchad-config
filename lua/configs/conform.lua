@@ -1,6 +1,6 @@
 local options = {
   formatters_by_ft = {
-go = { "gofumpt" },
+    go = { "gofumpt" },
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
@@ -8,7 +8,7 @@ go = { "gofumpt" },
     javascriptreact = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-    dart = { "prettierd", "prettier", stop_after_first = true },
+    dart = { "dart_format", "prettier", stop_after_first = true },
   },
 
   format_on_save = {
