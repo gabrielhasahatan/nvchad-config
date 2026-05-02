@@ -11,8 +11,12 @@ local servers = {
   "dartls",
   "clangd",
   "ruby_lsp",
+  "sql"
+  -- "tsgo"
 }
 vim.lsp.enable(servers)
+
+
 
 -- read :h vim.lsp.config for changing options of lsp servers
 

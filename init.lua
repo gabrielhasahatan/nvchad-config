@@ -34,3 +34,4 @@ require "autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })

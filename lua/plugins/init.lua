@@ -71,6 +71,22 @@ return {
     version = '*',
   },
 
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
@@ -104,5 +120,42 @@ return {
   --       "dart",
   --     },
   --   },
+  -- },
+  --
+
+
+  {
+    "nosduco/remote-sshfs.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
+  },
+  --   {
+  --   "sphamba/smear-cursor.nvim",
+  --   lazy = false,
+  --   opts = {
+  --     stiffness = 0.8,                      -- 0.6      [0, 1]
+  --     trailing_stiffness = 0.5,             -- 0.45     [0, 1]
+  --     stiffness_insert_mode = 0.7,          -- 0.5      [0, 1]
+  --     trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
+  --     damping = 0.95,                       -- 0.85     [0, 1]
+  --     damping_insert_mode = 0.95,           -- 0.9      [0, 1]
+  --     distance_stop_animating = 0.5,        -- 0.1      > 0
+  --   },
+  -- },
+  --
+  -- {
+  --   "kndndrj/nvim-dbee",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   build = function()
+  --     -- Install tries to automatically detect the install method.
+  --     -- if it fails, try calling it with one of these parameters:
+  --     --    "curl", "wget", "bitsadmin", "go"
+  --     require("dbee").install()
+  --   end,
+  --   config = function()
+  --     require("dbee").setup( --[[optional config]])
+  --   end,
   -- },
 }

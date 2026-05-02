@@ -11,7 +11,7 @@ vim.diagnostic.config({
   virtual_lines = false,
 })
 
-vim.lsp.inlay_hint.enable(true)
+vim.lsp.inlay_hint.enable(false)
 
 require('mini.animate').setup(
   {
