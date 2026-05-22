@@ -8,16 +8,19 @@ map("n", "<leader>lr", "<cmd> LspRestart <cr>", { desc = "Restart LSP" })
 map("n", "<leader>cr", "<cmd> Cppath <cr>", { desc = "Copy File Relative Path" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
-map("n", "<leader>rc", function()
-  require("remote-ssh").connect()
-end, { desc = "Connect SSH" })
-map("n", "<leader>ro", function()
-  require("remote-ssh").open()
-end, { desc = "Open remote file" })
 map("n", "<leader>wv", ":vsp<CR>", {
   noremap = true,
   silent = true,
   desc = "Vertical Split",
+})
+map("n", "<leader>rs", ":RemoteStart<CR>", {
+  desc = "Start Remote SSH",
+})
+map("n", "<leader>rx", ":RemoteStop<CR>", {
+  desc = "Stop Remote SSH",
+})
+map("n", "<leader>ri", ":RemoteInfo<CR>", {
+  desc = "Info Remote SSH",
 })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
