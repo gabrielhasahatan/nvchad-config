@@ -1,5 +1,16 @@
 require("nvchad.configs.lspconfig").defaults()
 
+vim.lsp.config("solargraph", {
+  settings = {
+    solargraph = {
+      diagnostics = true,
+      formatting = true,
+      completion = true,
+      useBundler = true,
+    },
+  },
+})
+
 local servers = {
   "html",
   "cssls",
@@ -10,27 +21,8 @@ local servers = {
   "lua_ls",
   "dartls",
   "clangd",
-  "ruby_lsp",
-  "sql"
+  -- "ruby_lsp",
+  "solargraph",
   -- "tsgo"
 }
 vim.lsp.enable(servers)
-
-
-
--- read :h vim.lsp.config for changing options of lsp servers
-
--- Optional: konfigurasi tambahan khusus untuk gopls
--- local lspconfig = require "lspconfig"
---
--- lspconfig.gopls.setup {
---   settings = {
---     gopls = {
---       gofumpt = true,
---       staticcheck = true,
---       analyses = {
---         unusedparams = true,
---       },
---     },
---   },
--- }

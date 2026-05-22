@@ -14,13 +14,13 @@ end, { desc = "Connect SSH" })
 map("n", "<leader>ro", function()
   require("remote-ssh").open()
 end, { desc = "Open remote file" })
-
+map("n", "<leader>wv", ":vsp<CR>", {
+  noremap = true,
+  silent = true,
+  desc = "Vertical Split",
+})
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 --
-local api = require('remote-sshfs.api')
-map('n', '<leader>rc', api.connect, { desc = "Ssh Remote" })
-map('n', '<leader>rd', api.disconnect, { desc = "Exit Ssh Remote" })
-map('n', '<leader>re', api.edit, { desc = "Edit Ssh Remote" })
 
 
 -- local viewHex = require("dbee")

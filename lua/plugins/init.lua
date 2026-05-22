@@ -20,6 +20,46 @@ return {
     end,
   },
   {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require "cmp"
+      local luasnip = require "luasnip"
+      opts = opts or {}
+      opts.mapping = opts.mapping or {}
+
+      opts.mapping["<C-j>"] = cmp.mapping.complete()
+      opts.mapping["<C-l>"] = cmp.mapping(function(fallback)
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end, { "i", "s" })
+
+      opts.mapping["<C-h>"] = cmp.mapping(function(fallback)
+        if luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" })
+
+      opts.enabled = function()
+        local line = vim.api.nvim_get_current_line()
+        local col = vim.api.nvim_win_get_cursor(0)[2]
+        local prev_char = col > 0 and line:sub(col, col) or ""
+
+        if prev_char == "{" then
+          return false
+        end
+
+        return true
+      end
+
+      return opts
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -124,11 +164,7 @@ return {
   --
 
 
-  {
-    "nosduco/remote-sshfs.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
+
   --   {
   --   "sphamba/smear-cursor.nvim",
   --   lazy = false,
