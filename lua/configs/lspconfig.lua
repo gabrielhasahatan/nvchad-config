@@ -15,7 +15,7 @@ local servers = {
   "html",
   "cssls",
   "ts_ls",
-  -- "gopls",
+  "gopls",
   "tailwindcss",
   "rust_analyzer",
   "lua_ls",

@@ -13,6 +13,26 @@ map("n", "<leader>wv", ":vsp<CR>", {
   silent = true,
   desc = "Vertical Split",
 })
+map("n", "<leader>rz", "<cmd> !rails zeitwerk:check <cr>", { desc = "Check Rails Zeitwerk" })
+map(
+  "n",
+  "<leader>rr",
+  "<cmd> !bundle exec annotate --models --exclude tests,fixtures,factories,serializers <cr>",
+  { desc = "Generate Model Schema" }
+)
+map(
+  "n",
+  "<leader>rf",
+  "<cmd> !bundle exec annotate --models %:p <cr>",
+  { desc = "Generate File Model Schema" }
+)
+map("n", "gp", "<cmd> lua require('goto-preview').goto_preview_definition() <cr>", { desc = "Typescript Check" })
+map("n", "fr", "<cmd> lua require('spectre').toggle() <cr>", { desc = "Typescript Check" })
+map("n", "fc", "<cmd> lua require('spectre').open_visual({select_word=true}) <cr>", { desc = "Find Current Word" })
+map("n", "ca", "<cmd> lua vim.lsp.buf.code_action() <cr>", { desc = "Code Action" })
+map("n", "<leader>rt", "<cmd> OverseerRun <cr>", { desc = "Run Task" })
+map("n", "<leader>rl", "<cmd> OverseerToggle <cr>", { desc = "Run Log" })
+
 map("n", "<leader>rs", ":RemoteStart<CR>", {
   desc = "Start Remote SSH",
 })

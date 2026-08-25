@@ -20,6 +20,10 @@ return {
     end,
   },
   {
+    "folke/which-key.nvim",
+    lazy = false
+  },
+  {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       local cmp = require "cmp"
@@ -43,6 +47,13 @@ return {
           fallback()
         end
       end, { "i", "s" })
+
+      opts.view = opts.view or {}
+      opts.view.docs = opts.view.docs or {}
+      opts.view.docs.auto_open = false
+
+      opts.window = opts.window or {}
+      opts.window.documentation = cmp.config.disable
 
       opts.enabled = function()
         local line = vim.api.nvim_get_current_line()
@@ -78,9 +89,20 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = {
+      filters = {
+        custom = { ".next" },
+      },
       view = {
         width = 45, -- 👈 ini yang kamu cari
       },
+      git = {
+        ignore = false,
+      },
+      renderer = {
+        icons = {
+          git_placement = "after"
+        }
+      }
     },
   },
 
@@ -106,35 +128,114 @@ return {
   },
 
   {
+    "rmagatti/goto-preview",
+    dependencies = { "rmagatti/logger.nvim" },
+    event = "BufEnter",
+    config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+  },
+  {
+    'nvim-pack/nvim-spectre',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    init = function()
+      local function set_blame_hl()
+        vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", {
+          fg = "#F5F5F5",
+          -- bg = "#792CA2",
+          -- bold = true,
+          -- blink = true,
+          underdotted = true,
+          italic = true,
+        })
+      end
+
+      vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
+        callback = set_blame_hl,
+      })
+    end,
+    opts = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        delay = 0,
+        ignore_whitespace = true,
+      },
+      current_line_blame_formatter = " ❓ <author>, <author_time:%R> - <summary>",
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
+    'stevearc/overseer.nvim',
+    lazy = false,
+    opts = {},
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    lazy = false,
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown({
+              -- even more custom stuff here
+            })
+          }
+        }
+      })
+      -- Load the extension after setting it up
+      require("telescope").load_extension("ui-select")
+    end,
+  },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    -- lazy = false,
+    event = "VeryLazy",
+    enabled = true,
+  },
+
+  {
     'echasnovski/mini.animate',
     lazy = false,
     version = '*',
   },
 
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     -- add any options here
+  --   },
+  --   dependencies = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- },
 
 
   {
     "amitds1997/remote-nvim.nvim",
-    version = "*",                      -- Pin to GitHub releases
+    version = "*",                     -- Pin to GitHub releases
     dependencies = {
-      "nvim-lua/plenary.nvim",          -- For standard functions
-      "MunifTanjim/nui.nvim",           -- To build the plugin UI
-      "nvim-telescope/telescope.nvim",  -- For picking b/w different remote methods
+      "nvim-lua/plenary.nvim",         -- For standard functions
+      "MunifTanjim/nui.nvim",          -- To build the plugin UI
+      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
     },
     config = true,
   }

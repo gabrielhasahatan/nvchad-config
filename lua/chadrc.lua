@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "tokyodark",
+  theme = "palenight",
   transparency = true,
 
   -- hl_override = {
@@ -15,7 +15,7 @@ M.base46 = {
   -- },
   hl_override = {
     Comment      = { italic = true, bg = "#1f2335", fg = "#4E9F3D" },
-    ["@comment"] = { italic = true },
+    ["@comment"] = { italic = true, bg = "#1f2335", fg = "#4E9F3D" },
     Tabline      = { bg = 'NONE' },
     LspInlayHint = { bg = 'NONE' },
     Visual       = { italic = true, },
@@ -27,7 +27,7 @@ M.base46 = {
 
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
-  theme = "tokyodark",
+  theme = "palenight",
   transparency = true,
   statusline = {
     theme = "default",
