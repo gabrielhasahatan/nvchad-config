@@ -32,6 +32,9 @@ map("n", "fc", "<cmd> lua require('spectre').open_visual({select_word=true}) <cr
 map("n", "ca", "<cmd> lua vim.lsp.buf.code_action() <cr>", { desc = "Code Action" })
 map("n", "<leader>rt", "<cmd> OverseerRun <cr>", { desc = "Run Task" })
 map("n", "<leader>rl", "<cmd> OverseerToggle <cr>", { desc = "Run Log" })
+map("n", "<leader>ls", "<cmd> LiveServerStart <cr>", { desc = "Live Server Start" })
+map("n", "<leader>lx", "<cmd> LiveServerStop <cr>", { desc = "Live Server Stop" })
+map("n", "<leader>lt", "<cmd> LiveServerToggle <cr>", { desc = "Live Server Toggle" })
 
 map("n", "<leader>rs", ":RemoteStart<CR>", {
   desc = "Start Remote SSH",

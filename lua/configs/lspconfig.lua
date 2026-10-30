@@ -23,6 +23,8 @@ local servers = {
   "clangd",
   -- "ruby_lsp",
   "solargraph",
-  -- "tsgo"
+  "jdtls",
+  -- "tsgo",
+  -- "pylsp"
 }
 vim.lsp.enable(servers)

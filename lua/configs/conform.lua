@@ -9,6 +9,7 @@ local options = {
     typescript = { "prettierd", "prettier", stop_after_first = true },
     typescriptreact = { "prettierd", "prettier", stop_after_first = true },
     dart = { "dart_format", "prettier", stop_after_first = true },
+    java = { "jdtls" }
   },
 
   format_on_save = {
